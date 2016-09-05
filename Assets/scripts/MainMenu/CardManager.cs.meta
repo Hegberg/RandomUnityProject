@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 6a874fd5fd8de4f44b711281e6e55499
+timeCreated: 1466638129
+licenseType: Free
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - OneToOne: {fileID: 473224, guid: a7fe3aa9c22669f4297fb0ff1f546f7f, type: 2}
+  - TwoToTwo: {fileID: 495534, guid: fa3a4d4d3bf3f0040827b2d95caaefad, type: 2}
+  - ThreeToThree: {fileID: 432166, guid: 890bcad89b828604ba14e64082b0fdd8, type: 2}
+  - FourToFour: {fileID: 412884, guid: 133babdfac67b94478ef98133fba2d8f, type: 2}
+  - FiveToFive: {fileID: 423078, guid: feb49f05f90ded84fa57fb5d8e267dbc, type: 2}
+  - SixToSix: {fileID: 405964, guid: 79121f5f3f24ed84cb0b5de9d6bd17ca, type: 2}
+  - SevenToSeven: {fileID: 436462, guid: 63d6bc7cc4e3e6e4082df19188e46953, type: 2}
+  - EightToEight: {fileID: 449836, guid: 09434783059b4f1418b38f836450c41b, type: 2}
+  - NineToNine: {fileID: 461584, guid: 88f811cfa69345b44b8464726f3988dc, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
