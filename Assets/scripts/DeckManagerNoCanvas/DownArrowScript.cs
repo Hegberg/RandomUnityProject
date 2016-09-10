@@ -27,7 +27,7 @@ public class DownArrowScript : MonoBehaviour {
             Debug.Log("Current Page number cards -> " + temp);
             Debug.Log("All Minion card count -> " + CardManagerNoScroll.AllMinions.Count);
             */
-            if (Input.GetMouseButtonDown(0) && ((((ShowCardsNoScroll.CurrentPage + 1)* 8)) < CardManagerNoScroll.AllCards.Count))
+            if (Input.GetMouseButtonDown(0) && ((((ShowCardsNoScroll.CurrentPage + 1)* 21)) < CardManagerNoScroll.AllCards.Count))
 
             {
                 //Debug.Log("DownArrow Clicked -> ");
@@ -44,7 +44,7 @@ public class DownArrowScript : MonoBehaviour {
             Debug.Log("Current Page number cards -> " + temp);
             Debug.Log("All Minion card count -> " + CardManagerNoScroll.AllMinions.Count);
             */
-            if (Input.GetMouseButtonDown(0) && ((((ShowCardsNoScroll.CurrentPage + 1) * 8)) < CardManagerNoScroll.AllMinions.Count))
+            if (Input.GetMouseButtonDown(0) && ((((ShowCardsNoScroll.CurrentPage + 1) * 21)) < CardManagerNoScroll.AllMinions.Count))
 
             {
                 //Debug.Log("DownArrow Clicked -> ");
@@ -61,7 +61,7 @@ public class DownArrowScript : MonoBehaviour {
             Debug.Log("Current Page number cards -> " + temp);
             Debug.Log("All Minion card count -> " + CardManagerNoScroll.AllMinions.Count);
             */
-            if (Input.GetMouseButtonDown(0) && ((((ShowCardsNoScroll.CurrentPage + 1) * 8)) < CardManagerNoScroll.AllSpells.Count))
+            if (Input.GetMouseButtonDown(0) && ((((ShowCardsNoScroll.CurrentPage + 1) * 21)) < CardManagerNoScroll.AllSpells.Count))
 
             {
                 //Debug.Log("DownArrow Clicked -> ");

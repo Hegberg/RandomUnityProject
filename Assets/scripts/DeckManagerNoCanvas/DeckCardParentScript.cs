@@ -51,6 +51,7 @@ public class DeckCardParentScript : MonoBehaviour {
                 RemoveCards();
             }
             DeckCreating.Clear();
+            ResetCardLimits();
             //need this or cards don't load correctly after hitting back out of a deck
             DeckParentScript.control.Load();
         }
@@ -60,6 +61,7 @@ public class DeckCardParentScript : MonoBehaviour {
             SaveDeck();
             DeckCreating.Clear();
             RemoveCards();
+            ResetCardLimits();
         }
         if (DeckLimitChanged)
         {
@@ -72,6 +74,12 @@ public class DeckCardParentScript : MonoBehaviour {
             deckLoaded = false;
             SortCardsInDeck();
         }
+    }
+
+    void ResetCardLimits()
+    {
+        CardsShowingUpperLimit = 18;
+        CardsShowingLowerLimit = 0;
     }
 
     public void SaveDeck()
@@ -138,7 +146,7 @@ public class DeckCardParentScript : MonoBehaviour {
             if (i < CardsShowingUpperLimit)
             {
                 //Debug.Log("Deck Sorting -> " + DeckCreating[i]);
-                Transform TempCard = (Transform)Instantiate(DeckPlaceHolderManager.AllPlaceHolders[DeckCreating[i]], new Vector3(37f, 20.5f - ((i-CardsShowingLowerLimit) * 2), 0), Quaternion.identity);
+                Transform TempCard = (Transform)Instantiate(DeckPlaceHolderManager.AllPlaceHolders[DeckCreating[i]], new Vector3(32f, 20.5f - ((i-CardsShowingLowerLimit) * 2), 0), Quaternion.identity);
                 TempCard.transform.SetParent(DeckCardParent.transform, false);
             }
         }

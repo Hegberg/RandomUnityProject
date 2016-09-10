@@ -10,6 +10,8 @@ public class CreateNewDeckScript : MonoBehaviour {
     public Sprite SaveDeckSprite;
     public Sprite CreateDeckSprite;
 
+    public Transform DeleteButton;
+
     // Use this for initialization
     void Start () {
 
@@ -19,6 +21,7 @@ public class CreateNewDeckScript : MonoBehaviour {
 	void Update () {
 	    if (BackHit)
         {
+            RemoveDeleteButton();
             this.gameObject.GetComponent<SpriteRenderer>().sprite = CreateDeckSprite;
             //this.gameObject.GetComponent<Renderer>().enabled = true;
             BackHit = false;
@@ -26,6 +29,7 @@ public class CreateNewDeckScript : MonoBehaviour {
         }
         if(deckLoaded)
         {
+            ShowDeleteButton();
             this.gameObject.GetComponent<SpriteRenderer>().sprite = SaveDeckSprite;
             deckLoaded = false;
         }
@@ -37,6 +41,8 @@ public class CreateNewDeckScript : MonoBehaviour {
         {
             if (DeckParentScript.control.GetNumberOfDecks() < 10)
             {
+                DeckParentScript.control.SetDeckClicked(-1);
+                ShowDeleteButton();
                 CreatingDeck = true;
                 this.gameObject.GetComponent<SpriteRenderer>().sprite = SaveDeckSprite;
                 //this.gameObject.GetComponent<Renderer>().enabled = false;
@@ -49,6 +55,7 @@ public class CreateNewDeckScript : MonoBehaviour {
         {
             if (DeckCardParentScript.DeckCreating.Count >= 20) //DeckSize is 20 currently
             {
+                RemoveDeleteButton();
                 CreatingDeck = false;
                 this.gameObject.GetComponent<SpriteRenderer>().sprite = CreateDeckSprite;
                 DeckCardParentScript.DeckSavedClearCards = true;
@@ -60,10 +67,17 @@ public class CreateNewDeckScript : MonoBehaviour {
         }
     }
 
-    /*
-    public void ShowCreatButton()
+    
+    void ShowDeleteButton()
     {
-        this.gameObject.GetComponent<Renderer>().enabled = true;
+        Instantiate(DeleteButton, new Vector3(30f, -19, 0), Quaternion.identity);
+        //Debug.Log("Button Showing -> " + TempCard.name);
     }
-    */
+
+    void RemoveDeleteButton()
+    {
+        //Debug.Log("Button Not Showing -> ");
+        DeleteDeckScript.control.DetroyDeleteButton();
+    }
+    
 }

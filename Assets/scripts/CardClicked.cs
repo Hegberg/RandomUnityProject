@@ -70,7 +70,7 @@ public class CardClicked : MonoBehaviour {
                     TempLastIndex = TempFirstIndex;
                     TempLastIndex = DeckCardParentScript.DeckCreating.LastIndexOf(PlaceInList);
                     //Debug.Log("TempLastIndex -> " + TempLastIndex);
-                    int temp = TempLastIndex - TempFirstIndex + 1;
+                    //int temp = TempLastIndex - TempFirstIndex + 1;
                     //Debug.Log("Amounts of the same card already in deck -> " + temp);
                     //TempLastIndex - TempFirstIndex < 1   -> means 1 card already exists, 2 allowed
                     //TempLastIndex - TempFirstIndex < 2   -> means 2 cards already exist, 3 allowed, etc

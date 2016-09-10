@@ -61,15 +61,15 @@ public class ShowCardsNoScroll : MonoBehaviour
         CurrentPage = 0;
         if (CurrentFilter == 0)
         {
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; (i < 21) && (i < CardManagerNoScroll.AllCards.Count); i++)
             //for (int i = 0; i < CardManager.AllCards.Count; i++)
             {
-                if (i < 4)
+                if (i < 7)
                 {
                     //Debug.Log("Card Added -> " + i + 1);
 
                     //This works for setting parent
-                    Transform TempCard = (Transform)Instantiate(CardManagerNoScroll.AllCards[i], new Vector3(-30 + (i * 15), 5, 0), Quaternion.identity);
+                    Transform TempCard = (Transform)Instantiate(CardManagerNoScroll.AllCards[i], new Vector3(-32 + (i * 8), 15, 0), Quaternion.identity);
                     //Debug.Log("Object -> " + TempCard.gameObject.name);
                     TempCard.transform.SetParent(CardParent.transform, false);
                     //Debug.Log("what -> " + TempCard.GetComponents<CardClicked>());
@@ -77,56 +77,72 @@ public class ShowCardsNoScroll : MonoBehaviour
                     //temp.transform.parent = CardParent.transform;
                     //temp.transform.SetParent(GameObject.Find("CardParent").transform, false);
                 }
+                else if (i<14)
+                {
+                    Transform TempCard = (Transform)Instantiate(CardManagerNoScroll.AllCards[i], new Vector3(-32 + ((i - 7) * 8), 2.5f, 0), Quaternion.identity);
+                    TempCard.transform.SetParent(CardParent.transform, false);
+                }
                 else
                 {
-                    Transform TempCard = (Transform)Instantiate(CardManagerNoScroll.AllCards[i], new Vector3(-30 + ((i - 4) * 15), -10, 0), Quaternion.identity);
+                    Transform TempCard = (Transform)Instantiate(CardManagerNoScroll.AllCards[i], new Vector3(-32 + ((i - 14) * 8), -10, 0), Quaternion.identity);
                     TempCard.transform.SetParent(CardParent.transform, false);
                 }
             }
         }
         if (CurrentFilter == 1)
         {
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; (i < 21) && (i < CardManagerNoScroll.AllMinions.Count); i++)
             //for (int i = 0; i < CardManager.AllMinions.Count; i++)
             {
-                if (i < 4)
+                if (i < 7)
                 {
                     //Debug.Log("Card Added -> " + i + 1);
 
                     //This works for setting parent
-                    Transform TempCard = (Transform)Instantiate(CardManagerNoScroll.AllMinions[i], new Vector3(-30 + (i * 15), 5, 0), Quaternion.identity);
+                    Transform TempCard = (Transform)Instantiate(CardManagerNoScroll.AllMinions[i], new Vector3(-32 + (i * 8), 15, 0), Quaternion.identity);
                     //Debug.Log("Object -> " + TempCard.gameObject.name);
                     TempCard.transform.SetParent(CardParent.transform, false);
 
                     //temp.transform.parent = CardParent.transform;
                     //temp.transform.SetParent(GameObject.Find("CardParent").transform, false);
                 }
+                else if (i < 14)
+                {
+                    Transform TempCard = (Transform)Instantiate(CardManagerNoScroll.AllMinions[i], new Vector3(-32 + ((i - 7) * 8), 2.5f, 0), Quaternion.identity);
+                    TempCard.transform.SetParent(CardParent.transform, false);
+                }
                 else
                 {
-                    Transform TempCard = (Transform)Instantiate(CardManagerNoScroll.AllMinions[i], new Vector3(-30 + ((i - 4) * 15), -10, 0), Quaternion.identity);
+                    Transform TempCard = (Transform)Instantiate(CardManagerNoScroll.AllMinions[i], new Vector3(-32 + ((i - 14) * 8), -10, 0), Quaternion.identity);
                     TempCard.transform.SetParent(CardParent.transform, false);
                 }
             }
         }
         if (CurrentFilter == 2)
         {
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; (i < 21) && (i < CardManagerNoScroll.AllSpells.Count); i++)
             //for (int i = 0; i < CardManager.AllSpells.Count; i++)
             {
-                if (i < 4)
+                if (i < 7)
                 {
                     //Debug.Log("Card Added -> " + i + 1);
+
                     //This works for setting parent
-                    Transform TempCard = (Transform)Instantiate(CardManagerNoScroll.AllSpells[i], new Vector3(-30 + (i * 15), 5, 0), Quaternion.identity);
+                    Transform TempCard = (Transform)Instantiate(CardManagerNoScroll.AllSpells[i], new Vector3(-32 + (i * 8), 15, 0), Quaternion.identity);
                     //Debug.Log("Object -> " + TempCard.gameObject.name);
                     TempCard.transform.SetParent(CardParent.transform, false);
 
                     //temp.transform.parent = CardParent.transform;
                     //temp.transform.SetParent(GameObject.Find("CardParent").transform, false);
                 }
+                else if (i < 14)
+                {
+                    Transform TempCard = (Transform)Instantiate(CardManagerNoScroll.AllSpells[i], new Vector3(-32 + ((i - 7) * 8), 2.5f, 0), Quaternion.identity);
+                    TempCard.transform.SetParent(CardParent.transform, false);
+                }
                 else
                 {
-                    Transform TempCard = (Transform)Instantiate(CardManagerNoScroll.AllSpells[i], new Vector3(-30 + ((i - 4) * 15), -10, 0), Quaternion.identity);
+                    Transform TempCard = (Transform)Instantiate(CardManagerNoScroll.AllSpells[i], new Vector3(-32 + ((i - 14) * 8), -10, 0), Quaternion.identity);
                     TempCard.transform.SetParent(CardParent.transform, false);
                 }
             }
@@ -138,8 +154,9 @@ public class ShowCardsNoScroll : MonoBehaviour
         CurrentPage += 1;
         if (CurrentFilter == 0)
         {
-            for (int i = 0; (i < 8) && (i < CardManagerNoScroll.AllCards.Count - (CurrentPage * 8)); i++)
+            for (int i = 0; (i < 21) && (i < CardManagerNoScroll.AllCards.Count - (CurrentPage * 21)); i++)
             {
+                /*
                 if (i < 4)
                 {
                     //Debug.Log("Card Added -> " + i + 1);
@@ -152,39 +169,69 @@ public class ShowCardsNoScroll : MonoBehaviour
                     Transform TempCard = (Transform)Instantiate(CardManagerNoScroll.AllCards[i + (CurrentPage * 8)], new Vector3(-30 + ((i - 4) * 15), -10, 0), Quaternion.identity);
                     TempCard.transform.SetParent(CardParent.transform, false);
                 }
+                */
+                if (i < 7)
+                {
+                    //Debug.Log("Card Added -> " + i + 1);
+
+                    Transform TempCard = (Transform)Instantiate(CardManagerNoScroll.AllCards[i + (CurrentPage * 21)], new Vector3(-32 + (i * 8), 15, 0), Quaternion.identity);
+                    TempCard.transform.SetParent(CardParent.transform, false);
+                }
+                else if (i < 14)
+                {
+                    Transform TempCard = (Transform)Instantiate(CardManagerNoScroll.AllCards[i + (CurrentPage * 21)], new Vector3(-32 + ((i - 7) * 8), 2.5f, 0), Quaternion.identity);
+                    TempCard.transform.SetParent(CardParent.transform, false);
+                }
+                else
+                {
+                    Transform TempCard = (Transform)Instantiate(CardManagerNoScroll.AllCards[i + (CurrentPage * 21)], new Vector3(-32 + ((i - 14) * 8), -10, 0), Quaternion.identity);
+                    TempCard.transform.SetParent(CardParent.transform, false);
+                }
             }
 
         }
         else if (CurrentFilter == 1)
         {
-            for (int i = 0; (i < 8) && (i < CardManagerNoScroll.AllMinions.Count - (CurrentPage * 8)); i++)
+            for (int i = 0; (i < 21) && (i < CardManagerNoScroll.AllMinions.Count - (CurrentPage * 21)); i++)
             {
-                if (i < 4)
+                if (i < 7)
                 {
                     //Debug.Log("Card Added -> " + i + 1);
-                    Transform TempCard = (Transform)Instantiate(CardManagerNoScroll.AllMinions[i + (CurrentPage * 8)], new Vector3(-30 + (i * 15), 5, 0), Quaternion.identity);
+
+                    Transform TempCard = (Transform)Instantiate(CardManagerNoScroll.AllMinions[i + (CurrentPage * 21)], new Vector3(-32 + (i * 8), 15, 0), Quaternion.identity);
+                    TempCard.transform.SetParent(CardParent.transform, false);
+                }
+                else if (i < 14)
+                {
+                    Transform TempCard = (Transform)Instantiate(CardManagerNoScroll.AllMinions[i + (CurrentPage * 21)], new Vector3(-32 + ((i - 7) * 8), 2.5f, 0), Quaternion.identity);
                     TempCard.transform.SetParent(CardParent.transform, false);
                 }
                 else
                 {
-                    Transform TempCard = (Transform)Instantiate(CardManagerNoScroll.AllMinions[i + (CurrentPage * 8)], new Vector3(-30 + ((i - 4) * 15), -10, 0), Quaternion.identity);
+                    Transform TempCard = (Transform)Instantiate(CardManagerNoScroll.AllMinions[i + (CurrentPage * 21)], new Vector3(-32 + ((i - 14) * 8), -10, 0), Quaternion.identity);
                     TempCard.transform.SetParent(CardParent.transform, false);
                 }
             }
         }
         else if (CurrentFilter == 2)
         {
-            for (int i = 0; (i < 8) && (i < CardManagerNoScroll.AllSpells.Count - (CurrentPage * 8)); i++)
+            for (int i = 0; (i < 21) && (i < CardManagerNoScroll.AllSpells.Count - (CurrentPage * 21)); i++)
             {
-                if (i < 4)
+                if (i < 7)
                 {
                     //Debug.Log("Card Added -> " + i + 1);
-                    Transform TempCard = (Transform)Instantiate(CardManagerNoScroll.AllSpells[i + (CurrentPage * 8)], new Vector3(-30 + (i * 15), 5, 0), Quaternion.identity);
+
+                    Transform TempCard = (Transform)Instantiate(CardManagerNoScroll.AllSpells[i + (CurrentPage * 21)], new Vector3(-32 + (i * 8), 15, 0), Quaternion.identity);
+                    TempCard.transform.SetParent(CardParent.transform, false);
+                }
+                else if (i < 14)
+                {
+                    Transform TempCard = (Transform)Instantiate(CardManagerNoScroll.AllSpells[i + (CurrentPage * 21)], new Vector3(-32 + ((i - 7) * 8), 2.5f, 0), Quaternion.identity);
                     TempCard.transform.SetParent(CardParent.transform, false);
                 }
                 else
                 {
-                    Transform TempCard = (Transform)Instantiate(CardManagerNoScroll.AllSpells[i + (CurrentPage * 8)], new Vector3(-30 + ((i - 4) * 15), -10, 0), Quaternion.identity);
+                    Transform TempCard = (Transform)Instantiate(CardManagerNoScroll.AllSpells[i + (CurrentPage * 21)], new Vector3(-32 + ((i - 14) * 8), -10, 0), Quaternion.identity);
                     TempCard.transform.SetParent(CardParent.transform, false);
                 }
             }
@@ -196,51 +243,69 @@ public class ShowCardsNoScroll : MonoBehaviour
         CurrentPage -= 1;
         if (CurrentFilter == 0)
         {
-            for (int i = 0; (i < 8) && (i < CardManagerNoScroll.AllCards.Count - (CurrentPage * 8)); i++)
+            for (int i = 0; (i < 21) && (i < CardManagerNoScroll.AllCards.Count - (CurrentPage * 21)); i++)
             {
-                if (i < 4)
+                if (i < 7)
                 {
                     //Debug.Log("Card Added -> " + i + 1);
-                    Transform TempCard = (Transform)Instantiate(CardManagerNoScroll.AllCards[i + (CurrentPage * 8)], new Vector3(-30 + (i * 15), 5, 0), Quaternion.identity);
+
+                    Transform TempCard = (Transform)Instantiate(CardManagerNoScroll.AllCards[i + (CurrentPage * 21)], new Vector3(-32 + (i * 8), 15, 0), Quaternion.identity);
+                    TempCard.transform.SetParent(CardParent.transform, false);
+                }
+                else if (i < 14)
+                {
+                    Transform TempCard = (Transform)Instantiate(CardManagerNoScroll.AllCards[i + (CurrentPage * 21)], new Vector3(-32 + ((i - 7) * 8), 2.5f, 0), Quaternion.identity);
                     TempCard.transform.SetParent(CardParent.transform, false);
                 }
                 else
                 {
-                    Transform TempCard = (Transform)Instantiate(CardManagerNoScroll.AllCards[i + (CurrentPage * 8)], new Vector3(-30 + ((i - 4) * 15), -10, 0), Quaternion.identity);
+                    Transform TempCard = (Transform)Instantiate(CardManagerNoScroll.AllCards[i + (CurrentPage * 21)], new Vector3(-32 + ((i - 14) * 8), -10, 0), Quaternion.identity);
                     TempCard.transform.SetParent(CardParent.transform, false);
                 }
             }
         }
         else if (CurrentFilter == 1)
         {
-            for (int i = 0; (i < 8) && (i < CardManagerNoScroll.AllMinions.Count - (CurrentPage * 8)); i++)
+            for (int i = 0; (i < 21) && (i < CardManagerNoScroll.AllMinions.Count - (CurrentPage * 21)); i++)
             {
-                if (i < 4)
+                if (i < 7)
                 {
                     //Debug.Log("Card Added -> " + i + 1);
-                    Transform TempCard = (Transform)Instantiate(CardManagerNoScroll.AllMinions[i + (CurrentPage * 8)], new Vector3(-30 + (i * 15), 5, 0), Quaternion.identity);
+
+                    Transform TempCard = (Transform)Instantiate(CardManagerNoScroll.AllMinions[i + (CurrentPage * 21)], new Vector3(-32 + (i * 8), 15, 0), Quaternion.identity);
+                    TempCard.transform.SetParent(CardParent.transform, false);
+                }
+                else if (i < 14)
+                {
+                    Transform TempCard = (Transform)Instantiate(CardManagerNoScroll.AllMinions[i + (CurrentPage * 21)], new Vector3(-32 + ((i - 7) * 8), 2.5f, 0), Quaternion.identity);
                     TempCard.transform.SetParent(CardParent.transform, false);
                 }
                 else
                 {
-                    Transform TempCard = (Transform)Instantiate(CardManagerNoScroll.AllMinions[i + (CurrentPage * 8)], new Vector3(-30 + ((i - 4) * 15), -10, 0), Quaternion.identity);
+                    Transform TempCard = (Transform)Instantiate(CardManagerNoScroll.AllMinions[i + (CurrentPage * 21)], new Vector3(-32 + ((i - 14) * 8), -10, 0), Quaternion.identity);
                     TempCard.transform.SetParent(CardParent.transform, false);
                 }
             }
         }
         else if (CurrentFilter == 2)
         {
-            for (int i = 0; (i < 8) && (i < CardManagerNoScroll.AllCards.Count - (CurrentPage * 8)); i++)
+            for (int i = 0; (i < 21) && (i < CardManagerNoScroll.AllSpells.Count - (CurrentPage * 21)); i++)
             {
-                if (i < 4)
+                if (i < 7)
                 {
                     //Debug.Log("Card Added -> " + i + 1);
-                    Transform TempCard = (Transform)Instantiate(CardManagerNoScroll.AllCards[i + (CurrentPage * 8)], new Vector3(-30 + (i * 15), 5, 0), Quaternion.identity);
+
+                    Transform TempCard = (Transform)Instantiate(CardManagerNoScroll.AllSpells[i + (CurrentPage * 21)], new Vector3(-32 + (i * 8), 15, 0), Quaternion.identity);
+                    TempCard.transform.SetParent(CardParent.transform, false);
+                }
+                else if (i < 14)
+                {
+                    Transform TempCard = (Transform)Instantiate(CardManagerNoScroll.AllSpells[i + (CurrentPage * 21)], new Vector3(-32 + ((i - 7) * 8), 2.5f, 0), Quaternion.identity);
                     TempCard.transform.SetParent(CardParent.transform, false);
                 }
                 else
                 {
-                    Transform TempCard = (Transform)Instantiate(CardManagerNoScroll.AllCards[i + (CurrentPage * 8)], new Vector3(-30 + ((i - 4) * 15), -10, 0), Quaternion.identity);
+                    Transform TempCard = (Transform)Instantiate(CardManagerNoScroll.AllSpells[i + (CurrentPage * 21)], new Vector3(-32 + ((i - 14) * 8), -10, 0), Quaternion.identity);
                     TempCard.transform.SetParent(CardParent.transform, false);
                 }
             }

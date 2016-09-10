@@ -39,7 +39,8 @@ public class DeckParentScript : MonoBehaviour {
         {
             for (int i = 0; i < playerDecks.Count; i++)
             {
-                if (GUI.Button(new Rect(Screen.width - (Screen.width / 6.2f), (0 + (Screen.height / 15)) + (i * 20), Screen.width/9.6f, Screen.height/27f), "Deck Number " + (i + 1)))
+                
+                if (GUI.Button(new Rect(Screen.width - (Screen.width / 6.6f), (0 + (Screen.height / 65)) + (i * (Screen.height / 25)), Screen.width/10f, Screen.height/27f), "Deck #" + (i + 1)))
                 {
                     //Debug.Log("Button Clicked -> " + i);
                     deckClicked = i;
@@ -47,6 +48,16 @@ public class DeckParentScript : MonoBehaviour {
                     CreateNewDeckScript.CreatingDeck = true;
                     CreateNewDeckScript.deckLoaded = true;
                 }
+                /*
+                if (GUI.Button(new Rect(Screen.width - (Screen.width / 6.2f), 20 + (i * 20), 40, 20), "Deck Number " + (i + 1)))
+                {
+                    //Debug.Log("Button Clicked -> " + i);
+                    deckClicked = i;
+                    DeckCardParentScript.deckLoaded = true;
+                    CreateNewDeckScript.CreatingDeck = true;
+                    CreateNewDeckScript.deckLoaded = true;
+                }
+                */
             }
         }
         
@@ -74,15 +85,42 @@ public class DeckParentScript : MonoBehaviour {
     {
         if (File.Exists(Application.persistentDataPath + "/playerDecks.dat"))
         {
-            //Debug.Log("Deck selected2 " + deckClicked);
+            Debug.Log("Deck selected2 " + deckClicked);
             //Debug.Log("Deck chosen size2 -> " + playerDecks[deckClicked].Count);
-            playerDecks.RemoveAt(deckClicked);
-            playerDecks.Insert(deckClicked, DeckCardParentScript.DeckCreating);
+            if(deckClicked != -1){
+                playerDecks.RemoveAt(deckClicked);
+                playerDecks.Insert(deckClicked, DeckCardParentScript.DeckCreating);
+            } else
+            {
+                playerDecks.Add(DeckCardParentScript.DeckCreating);
+            }
             BinaryFormatter bf = new BinaryFormatter();
             FileStream file = File.Open(Application.persistentDataPath + "/playerDecks.dat", FileMode.Open);
             bf.Serialize(file, playerDecks);
             file.Close();
         } else
+        {
+            playerDecks.Add(DeckCardParentScript.DeckCreating);
+            BinaryFormatter bf = new BinaryFormatter();
+            FileStream file = File.Create(Application.persistentDataPath + "/playerDecks.dat");
+            bf.Serialize(file, playerDecks);
+            file.Close();
+        }
+        Load();
+    }
+
+    public void Delete(){
+        if (File.Exists(Application.persistentDataPath + "/playerDecks.dat"))
+        {
+            //Debug.Log("Deck selected2 " + deckClicked);
+            //Debug.Log("Deck chosen size2 -> " + playerDecks[deckClicked].Count);
+            playerDecks.RemoveAt(deckClicked);
+            BinaryFormatter bf = new BinaryFormatter();
+            FileStream file = File.Open(Application.persistentDataPath + "/playerDecks.dat", FileMode.Open);
+            bf.Serialize(file, playerDecks);
+            file.Close();
+        }
+        else
         {
             playerDecks.Add(DeckCardParentScript.DeckCreating);
             BinaryFormatter bf = new BinaryFormatter();
