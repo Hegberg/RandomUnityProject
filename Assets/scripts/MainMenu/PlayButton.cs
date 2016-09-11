@@ -4,6 +4,8 @@ using UnityEngine.SceneManagement;
 
 public class PlayButton : MonoBehaviour {
 
+
+
 	// Use this for initialization
 	void Start () {
 	
@@ -20,8 +22,13 @@ public class PlayButton : MonoBehaviour {
         if (Input.GetMouseButtonDown(0))
         {
             //Debug.Log("Play was clicked on -> ");
-            GameControl.InGame = true;
-            SceneManager.LoadScene("DefaultGameBoard");
+            //GameControl.InGame = true;
+            SceneManager.LoadScene("Lobby");
         }
+    }
+
+    void ConnectToServer()
+    {
+
     }
 }
